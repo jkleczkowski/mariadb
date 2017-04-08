@@ -188,4 +188,4 @@ if [ "$1" = 'mysqld' -a -z "$wantHelp" ]; then
 	fi
 fi
 
-exec "$@"
+exec "$@" --character-set-server=${CHARACTER_SET_SERVER} --collation-server=${COLLATION_SERVER}

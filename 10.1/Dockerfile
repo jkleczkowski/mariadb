@@ -100,7 +100,14 @@ VOLUME /var/lib/mysql
 
 COPY docker-entrypoint.sh /usr/local/bin/
 RUN ln -s usr/local/bin/docker-entrypoint.sh / # backwards compat
+
+ENV CHARACTER_SET_SERVER "latin2"
+ENV COLLATION_SERVER "latin2_general_ci"
+
 ENTRYPOINT ["docker-entrypoint.sh"]
 
 EXPOSE 3306
+
+#COPY runmariadb.sh /runmariadb.sh
+#RUN chmod 0755 /runmariadb.sh
 CMD ["mysqld"]
